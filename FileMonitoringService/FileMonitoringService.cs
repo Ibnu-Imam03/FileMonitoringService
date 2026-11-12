@@ -20,7 +20,15 @@ namespace FileMonitoringService
         private string _destinationFolder;
         private string _logFolder;
         private FileSystemWatcher _watcher;
+        public void StartForDebugging()
+        {
+            OnStart(new string[0]);
+        }
 
+        public void StopForDebugging()
+        {
+            OnStop();
+        }
         private void InitializeLogger(bool writeToConsole = false)
         {
             Logger.Initialize(_logFolder, writeToConsole);

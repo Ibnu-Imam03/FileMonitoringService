@@ -1,25 +1,36 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FileMonitoringService
 {
     internal static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
         static void Main()
         {
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
+            if (Environment.UserInteractive)
             {
-                new FileMonitoringService()
-            };
-            ServiceBase.Run(ServicesToRun);
+                // Run in console debugging mode.
+                FileMonitoringService service =new FileMonitoringService();
+
+                service.StartForDebugging();
+
+                Console.WriteLine();
+                Console.WriteLine("File Monitoring Service is running.");
+                Console.WriteLine("Press any key to stop...");
+
+                Console.ReadKey();
+
+                service.StopForDebugging();
+            }
+            else
+            {
+                // Run as a Windows Service.
+                ServiceBase.Run(
+                    new ServiceBase[]
+                    {
+                        new FileMonitoringService()
+                    });
+            }
         }
     }
 }
