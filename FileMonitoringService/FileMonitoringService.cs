@@ -10,9 +10,9 @@ using System.Threading.Tasks;
 
 namespace FileMonitoringService
 {
-    public partial class Service1 : ServiceBase
+    public partial class FileMonitoringService : ServiceBase
     {
-        public Service1()
+        public FileMonitoringService()
         {
             InitializeComponent();
         }

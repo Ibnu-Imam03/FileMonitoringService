@@ -1,6 +1,6 @@
 ﻿namespace FileMonitoringService
 {
-    partial class Service1
+    partial class FileMonitoringService
     {
         /// <summary> 
         /// Required designer variable.
