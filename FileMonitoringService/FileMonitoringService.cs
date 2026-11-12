@@ -15,6 +15,12 @@ namespace FileMonitoringService
         public FileMonitoringService()
         {
             InitializeComponent();
+
+            ServiceName = "FileMonitoringService";
+            CanStop = true;
+            CanPauseAndContinue = false;
+            AutoLog = false;
+
         }
 
         protected override void OnStart(string[] args)
